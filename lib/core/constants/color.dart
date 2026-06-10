@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 class StarlogColor {
-  static const star = Color(0x00FFC30F);
+  static const star = Color(0xFFFFC30F);
   static const black = Color(0xFF393939);
   static const white = Color(0xFFFFFFFF);
   static const grayBox = Color(0xFFF8F8F8);
