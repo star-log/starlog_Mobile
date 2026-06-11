@@ -24,6 +24,7 @@ class _StarlogSplashState extends State<StarlogSplash> {
         _isSplashVisible = true;
       });
       await Future.delayed(Duration(seconds: 3));
+      if (!mounted) return;
       context.go('/');
     },);
   }
