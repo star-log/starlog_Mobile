@@ -14,14 +14,14 @@ class StarlogSplash extends StatefulWidget {
 }
 
 class _StarlogSplashState extends State<StarlogSplash> {
-  bool canShowSplash = true;
+  bool _isSplashVisible = false;
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       setState(() {
-        canShowSplash = false;
+        _isSplashVisible = true;
       });
       await Future.delayed(Duration(seconds: 3));
       context.go('/');
@@ -35,7 +35,7 @@ class _StarlogSplashState extends State<StarlogSplash> {
       body: Center(
         child: AnimatedOpacity(
           duration: Duration(seconds: 1),
-          opacity: canShowSplash ? 0 : 1,
+          opacity: _isSplashVisible ? 1 : 0,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
