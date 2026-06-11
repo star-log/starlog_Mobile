@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routerConfig: appRouter,
       builder: (context, child) {
-        return AppBackground(child: child!);
+        return AppBackground(child: child ?? SizedBox());
       },
     );
   }
