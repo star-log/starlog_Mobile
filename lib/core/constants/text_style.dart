@@ -41,5 +41,5 @@ abstract final class StarlogTextStyle {
 
 const TextStyle defaultTextStyle = TextStyle(
   fontFamily: 'Pretendard',
-  color: StarlogColor.white,
+  color: StarlogColor.black,
 );
