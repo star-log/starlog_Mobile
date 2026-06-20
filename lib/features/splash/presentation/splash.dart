@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:starlog_mobile/core/constants/app_assets.dart';
+import 'package:starlog_mobile/core/constants/color.dart';
 import 'package:starlog_mobile/core/constants/text_style.dart';
 
 class StarlogSplash extends StatefulWidget {
@@ -23,10 +24,10 @@ class _StarlogSplashState extends State<StarlogSplash> {
       setState(() {
         _isSplashVisible = true;
       });
-      await Future.delayed(Duration(seconds: 3));
+      await Future.delayed(const Duration(seconds: 3));
       if (!mounted) return;
-      context.go('/');
-    },);
+      context.go('/onBoarding');
+    });
   }
 
   @override
@@ -58,7 +59,7 @@ class _StarlogSplashState extends State<StarlogSplash> {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 10),
-                child: Text('별그늘', style: StarlogTextStyle.splash),
+                child: Text('별그늘', style: StarlogTextStyle.splash.copyWith(color: StarlogColor.white)),
               )
             ],
           )
