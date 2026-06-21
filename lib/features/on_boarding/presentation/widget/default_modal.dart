@@ -40,9 +40,7 @@ class StarlogModal extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 5),
                 child: Text(
                   title,
-                  style: StarlogTextStyle.body1.copyWith(
-                    color: StarlogColor.black,
-                  ),
+                  style: StarlogTextStyle.body1,
                   textAlign: TextAlign.center,
                 ),
               ),
