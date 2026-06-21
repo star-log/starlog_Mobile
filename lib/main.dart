@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:starlog_mobile/core/router/app_router.dart';
 import 'package:starlog_mobile/core/widgets/app_background.dart';
 
@@ -14,8 +15,17 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       routerConfig: appRouter,
+      locale: const Locale('ko', 'KR'),
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('ko', 'KR'),
+      ],
       builder: (context, child) {
-        return AppBackground(child: child ?? SizedBox());
+        return AppBackground(child: child ?? const SizedBox());
       },
     );
   }
