@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
+import 'package:starlog_mobile/core/constants/color.dart';
 
 class StarlogBottomNavBar extends StatelessWidget {
   final int currentIndex;
@@ -14,13 +15,22 @@ class StarlogBottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      decoration: BoxDecoration(
+        color: StarlogColor.white,
+        boxShadow: [
+          BoxShadow(
+            color: StarlogColor.black.withValues(alpha: 0.08),
+            offset: Offset(0, -4),
+            blurRadius: 12.0,
+          )
+        ]
+      ),
       child: SafeArea(
         top: false,
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8),
+          padding: const EdgeInsets.symmetric(vertical: 10),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               GestureDetector(
                 onTap: () => onTap(0),
