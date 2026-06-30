@@ -16,7 +16,7 @@ class AppBackground extends StatelessWidget {
       children: [
         Positioned.fill(
           child: SvgPicture.asset(
-            AppAssets.appBackground,
+            StarlogAppAssets.appBackground,
             fit: BoxFit.cover,
           ),
         ),

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:starlog_mobile/core/constants/color.dart';
 import 'package:starlog_mobile/core/constants/text_style.dart';
 import 'package:starlog_mobile/features/on_boarding/presentation/widget/button.dart';
@@ -68,8 +69,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Container(
+                height: MediaQuery.of(context).size.height * 0.5,
                 width: double.infinity,
-                height: 400,
                 decoration: BoxDecoration(
                   color: StarlogColor.white,
                   borderRadius: BorderRadius.circular(24),
@@ -103,7 +104,13 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                                   leftMessage: '아니요',
                                   rightMessage: '네',
                                   onLeftPressed: () => context.pop(),
-                                  onRightPressed: () {} // TODO: 메인페이지로 이동
+                                  onRightPressed: () async {
+                                    final prefs = await SharedPreferences.getInstance();
+                                    await prefs.setString('birthday', '${_currentDate.year}.${_currentDate.month}.${_currentDate.day}');
+                                    if (!context.mounted) return;
+                                    context.pop();
+                                    context.go('/main');
+                                  }
                               )
                           );
                         },

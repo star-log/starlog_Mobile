@@ -27,17 +27,7 @@ class RankingColor {
   static const other = Color(0xFFD3D7FF);
 }
 
-class ZodiacColor {
-  static const gemini = Color(0xFFFFCF99);
-  static const aquarius = Color(0xFF99C5FF);
-  static const libra = Color(0xFFFFAF99);
-  static const aries = Color(0xFFD3C4AA);
-  static const taurus = Color(0xFFFFBE56);
-  static const cancer = Color(0xFFFF89C6);
-  static const leo = Color(0xFFFFB16E);
-  static const scorpio = Color(0xFFCB8CFF);
-  static const sagittarius = Color(0xFF97F0EC);
-  static const capricorn = Color(0xFFACE5B4);
-  static const pisces = Color(0xFF83DCFF);
-  static const virgo = Color(0xFFFFB3DD);
+class BadgeColor {
+  static const fill = Color(0xFFFFCD75);
+  static const border = Color(0xFFF2BD63);
 }
