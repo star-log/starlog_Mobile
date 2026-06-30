@@ -49,7 +49,7 @@ final GoRouter appRouter = GoRouter(
       branches: [
         StatefulShellBranch(
           routes: [
-            GoRoute(path: '/main', builder: (_, __) => const StarlogMain()),
+            GoRoute(path: '/main', builder: (_, _) => const StarlogMain()),
           ],
         ),
       ],
