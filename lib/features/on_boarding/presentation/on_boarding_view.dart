@@ -106,7 +106,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                                   onLeftPressed: () => context.pop(),
                                   onRightPressed: () async {
                                     final prefs = await SharedPreferences.getInstance();
-                                    prefs.setString('birthday', '${_currentDate.year}.${_currentDate.month}.${_currentDate.day}');
+                                    await prefs.setString('birthday', '${_currentDate.year}.${_currentDate.month}.${_currentDate.day}');
+                                    if (!context.mounted) return;
                                     context.pop();
                                     context.go('/main');
                                   }
