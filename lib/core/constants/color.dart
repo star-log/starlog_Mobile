@@ -26,3 +26,8 @@ class RankingColor {
   static const third = Color(0xFFE0CAA1);
   static const other = Color(0xFFD3D7FF);
 }
+
+class BadgeColor {
+  static const fill = Color(0xFFFFCD75);
+  static const border = Color(0xFFF2BD63);
+}

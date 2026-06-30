@@ -80,4 +80,22 @@ extension ZodiacExtension on Zodiac {
         Zodiac.pisces => Color(0xFF83DCFF),
         Zodiac.virgo => Color(0xFFFFB3DD)
       };
+
+  static Zodiac fromBirthday(int month, int day) {
+    return switch ((month, day)) {
+      (1, <= 19) => Zodiac.capricorn,
+      (1, >= 20) || (2, <= 18) => Zodiac.aquarius,
+      (2, >= 19) || (3, <= 20) => Zodiac.pisces,
+      (3, >= 21) || (4, <= 19) => Zodiac.aries,
+      (4, >= 20) || (5, <= 20) => Zodiac.taurus,
+      (5, >= 21) || (6, <= 21) => Zodiac.gemini,
+      (6, >= 22) || (7, <= 22) => Zodiac.cancer,
+      (7, >= 23) || (8, <= 22) => Zodiac.leo,
+      (8, >= 23) || (9, <= 22) => Zodiac.virgo,
+      (9, >= 23) || (10, <= 22) => Zodiac.libra,
+      (10, >= 23) || (11, <= 21) => Zodiac.scorpio,
+      (11, >= 22) || (12, <= 21) => Zodiac.sagittarius,
+      _ => Zodiac.capricorn,
+    };
+  }
 }

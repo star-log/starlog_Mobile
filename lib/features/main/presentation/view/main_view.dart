@@ -8,6 +8,7 @@ import 'package:starlog_mobile/core/constants/color.dart';
 import 'package:starlog_mobile/core/constants/text_style.dart';
 import 'package:starlog_mobile/core/widgets/custom_async_value.dart';
 import 'package:starlog_mobile/features/main/presentation/view_model/main_view_model.dart';
+import 'package:starlog_mobile/features/main/presentation/view_model/my_zodiac_view_model.dart';
 import 'package:starlog_mobile/features/main/presentation/widget/ranking_item.dart';
 
 class StarlogMain extends ConsumerWidget {
@@ -16,6 +17,7 @@ class StarlogMain extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     String now = DateFormat('M월 dd일').format(DateTime.now());
+    final myZodiac = ref.watch(myZodiacProvider).value;
 
     return Scaffold(
       backgroundColor: Colors.transparent,
@@ -72,6 +74,7 @@ class StarlogMain extends ConsumerWidget {
                 child: CustomAsyncValue(
                   value: ref.watch(mainViewModelProvider),
                   data: (value) => ListView.builder(
+                    padding: EdgeInsets.only(top: value.first == myZodiac ? 20 : 0),
                     itemCount: value.length,
                     itemBuilder: (BuildContext context, int index) {
                       return GestureDetector(
@@ -81,6 +84,7 @@ class StarlogMain extends ConsumerWidget {
                         child: RankingItem(
                           rank: index + 1,
                           zodiac: value[index],
+                          isMySign: myZodiac == value[index],
                         ),
                       );
                     },

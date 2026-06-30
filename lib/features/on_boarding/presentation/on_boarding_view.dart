@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:starlog_mobile/core/constants/color.dart';
 import 'package:starlog_mobile/core/constants/text_style.dart';
 import 'package:starlog_mobile/features/on_boarding/presentation/widget/button.dart';
@@ -103,7 +104,9 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                                   leftMessage: '아니요',
                                   rightMessage: '네',
                                   onLeftPressed: () => context.pop(),
-                                  onRightPressed: () {
+                                  onRightPressed: () async {
+                                    final prefs = await SharedPreferences.getInstance();
+                                    prefs.setString('birthday', '${_currentDate.year}.${_currentDate.month}.${_currentDate.day}');
                                     context.pop();
                                     context.go('/main');
                                   }
