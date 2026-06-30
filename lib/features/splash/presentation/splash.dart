@@ -48,13 +48,13 @@ class _StarlogSplashState extends State<StarlogSplash> {
                     imageFilter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
                     child: ColorFiltered(
                       colorFilter: ColorFilter.mode(
-                        Colors.white.withOpacity(0.1),
+                        StarlogColor.white.withValues(alpha: 0.1),
                         BlendMode.srcATop,
                       ),
-                      child: SvgPicture.asset(AppAssets.splashStar),
+                      child: SvgPicture.asset(StarlogAppAssets.splashStar),
                     ),
                   ),
-                  SvgPicture.asset(AppAssets.splashStar),
+                  SvgPicture.asset(StarlogAppAssets.splashStar),
                 ],
               ),
               Padding(
