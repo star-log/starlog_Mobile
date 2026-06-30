@@ -16,7 +16,7 @@ class StarlogMain extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    String now = DateFormat('M월 dd일').format(DateTime.now());
+    String now = DateFormat('M월 d일').format(DateTime.now());
     final myZodiac = ref.watch(myZodiacProvider).value;
 
     return Scaffold(
