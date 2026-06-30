@@ -68,8 +68,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Container(
+                height: MediaQuery.of(context).size.height * 0.5,
                 width: double.infinity,
-                height: 400,
                 decoration: BoxDecoration(
                   color: StarlogColor.white,
                   borderRadius: BorderRadius.circular(24),
@@ -103,7 +103,10 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                                   leftMessage: '아니요',
                                   rightMessage: '네',
                                   onLeftPressed: () => context.pop(),
-                                  onRightPressed: () {} // TODO: 메인페이지로 이동
+                                  onRightPressed: () {
+                                    context.pop();
+                                    context.go('/main');
+                                  }
                               )
                           );
                         },
