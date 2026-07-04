@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:ming_cute_icons/ming_cute_icons.dart';
 import 'package:starlog_mobile/core/constants/app_assets.dart';
 import 'package:starlog_mobile/core/constants/color.dart';
 import 'package:starlog_mobile/core/constants/text_style.dart';
 import 'package:starlog_mobile/core/widgets/custom_async_value.dart';
-import 'package:starlog_mobile/features/main/presentation/view_model/main_view_model.dart';
-import 'package:starlog_mobile/features/main/presentation/view_model/my_zodiac_view_model.dart';
-import 'package:starlog_mobile/features/main/presentation/widget/ranking_item.dart';
+import 'package:starlog_mobile/features/fortune/presentation/view_model/fortune_view_model.dart';
+import 'package:starlog_mobile/features/fortune/presentation/view_model/my_zodiac_view_model.dart';
+import 'package:starlog_mobile/features/fortune/presentation/widget/ranking_item.dart';
 
 class StarlogMain extends ConsumerWidget {
   const StarlogMain({super.key});
@@ -74,17 +75,17 @@ class StarlogMain extends ConsumerWidget {
                 child: CustomAsyncValue(
                   value: ref.watch(mainViewModelProvider),
                   data: (value) => ListView.builder(
-                    padding: EdgeInsets.only(top: value.first == myZodiac ? 20 : 0),
+                    padding: EdgeInsets.only(top: value.first.zodiac == myZodiac ? 20 : 0),
                     itemCount: value.length,
                     itemBuilder: (BuildContext context, int index) {
                       return GestureDetector(
                         onTap: () {
-                          // TODO: 상세 조회 페이지로 이동
+                          context.push('/main/detail', extra: value[index].fortuneId);
                         },
                         child: RankingItem(
                           rank: index + 1,
-                          zodiac: value[index],
-                          isMySign: myZodiac == value[index],
+                          zodiac: value[index].zodiac,
+                          isMySign: myZodiac == value[index].zodiac,
                         ),
                       );
                     },
