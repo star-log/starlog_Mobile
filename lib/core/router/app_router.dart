@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:starlog_mobile/core/widgets/bottom_navigation_bar.dart';
-import 'package:starlog_mobile/features/main/presentation/view/main_view.dart';
+import 'package:starlog_mobile/features/fortune/presentation/view/fortune_detail_view.dart';
+import 'package:starlog_mobile/features/fortune/presentation/view/fortune_view.dart';
 import 'package:starlog_mobile/features/on_boarding/presentation/on_boarding_view.dart';
 import 'package:starlog_mobile/features/splash/presentation/splash.dart';
 
+final _rootNavigatorKey = GlobalKey<NavigatorState>();
+
 final GoRouter appRouter = GoRouter(
+  navigatorKey: _rootNavigatorKey,
   initialLocation: '/splash',
   routes: [
     GoRoute(
@@ -49,7 +53,19 @@ final GoRouter appRouter = GoRouter(
       branches: [
         StatefulShellBranch(
           routes: [
-            GoRoute(path: '/main', builder: (_, _) => const StarlogMain()),
+            GoRoute(
+                path: '/main',
+                builder: (_, _) => const StarlogMain(),
+              routes: [
+                GoRoute(
+                  path: 'detail',
+                  parentNavigatorKey: _rootNavigatorKey,
+                  builder: (context, state) {
+                    return FortuneDetailView(fortuneId: state.extra as int);
+                  },
+                )
+              ]
+            ),
           ],
         ),
       ],
