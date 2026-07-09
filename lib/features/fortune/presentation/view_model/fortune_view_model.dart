@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:starlog_mobile/core/enums/zodiac.dart';
 import 'package:starlog_mobile/features/fortune/data/model/fortune_model.dart';
