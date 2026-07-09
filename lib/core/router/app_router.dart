@@ -63,7 +63,10 @@ final GoRouter appRouter = GoRouter(
                 GoRoute(
                   path: 'detail',
                   pageBuilder: (context, state) {
-                    final (fortuneId, animate) = state.extra as (int, bool);
+                    final extra = state.extra;
+                    final (fortuneId, animate) = extra is (int, bool)
+                        ? extra
+                        : (1, true);
                     final child = FortuneDetailView(fortuneId: fortuneId);
                     return animate
                         ? MaterialPage(child: child)
