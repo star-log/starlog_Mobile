@@ -80,7 +80,7 @@ class StarlogMain extends ConsumerWidget {
                     itemBuilder: (BuildContext context, int index) {
                       return GestureDetector(
                         onTap: () {
-                          context.push('/main/detail', extra: value[index].fortuneId);
+                          context.push('/main/detail', extra: (value[index].fortuneId, true));
                         },
                         child: RankingItem(
                           rank: index + 1,

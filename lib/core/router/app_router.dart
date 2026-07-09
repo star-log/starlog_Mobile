@@ -37,7 +37,10 @@ final GoRouter appRouter = GoRouter(
           body: navigationShell,
           bottomNavigationBar: StarlogBottomNavBar(
             currentIndex: navigationShell.currentIndex,
-            onTap: (index) => navigationShell.goBranch(index),
+            onTap: (index) => navigationShell.goBranch(
+              index,
+              initialLocation: index == navigationShell.currentIndex,
+            ),
           ),
         ),
         transitionsBuilder: (context, animation, secondaryAnimation, child) =>
@@ -59,9 +62,12 @@ final GoRouter appRouter = GoRouter(
               routes: [
                 GoRoute(
                   path: 'detail',
-                  parentNavigatorKey: _rootNavigatorKey,
-                  builder: (context, state) {
-                    return FortuneDetailView(fortuneId: state.extra as int);
+                  pageBuilder: (context, state) {
+                    final (fortuneId, animate) = state.extra as (int, bool);
+                    final child = FortuneDetailView(fortuneId: fortuneId);
+                    return animate
+                        ? MaterialPage(child: child)
+                        : NoTransitionPage(child: child);
                   },
                 )
               ]
