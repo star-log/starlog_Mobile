@@ -19,7 +19,10 @@ class FortuneDetailViewModel extends AsyncNotifier<FortuneDetailModel> {
 
   @override
   FutureOr<FortuneDetailModel> build() {
-    return _dummyList.firstWhere((e) => e.fortuneId == fortuneId);
+    return _dummyList.firstWhere(
+      (e) => e.fortuneId == fortuneId,
+      orElse: () => throw StateError('운세 정보를 찾을 수 없어요. (id: $fortuneId)'),
+    );
   }
 }
 
