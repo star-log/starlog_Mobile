@@ -75,7 +75,7 @@ class StarlogMain extends ConsumerWidget {
                 child: CustomAsyncValue(
                   value: ref.watch(mainViewModelProvider),
                   data: (value) => ListView.builder(
-                    padding: EdgeInsets.only(top: value.first.zodiac == myZodiac ? 20 : 0),
+                    padding: EdgeInsets.only(top: value.isNotEmpty && value.first.zodiac == myZodiac ? 20 : 0),
                     itemCount: value.length,
                     itemBuilder: (BuildContext context, int index) {
                       return GestureDetector(
