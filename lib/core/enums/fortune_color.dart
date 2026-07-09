@@ -24,15 +24,15 @@ extension FortuneColorExtension on FortuneColor {
     FortuneColor.yellow => const Color(0xFFFFD57C),
     FortuneColor.yellowGreen => const Color(0xFFC6E584),
     FortuneColor.green => const Color(0xFF9CE28E),
-    FortuneColor.mint => const Color(0xFF96E5D1),
-    FortuneColor.skyBlue => const Color(0xFF9EE4FF),
+    FortuneColor.mint => const Color(0xFF85EECD),
+    FortuneColor.skyBlue => const Color(0xFFADE3F4),
     FortuneColor.blue => const Color(0xFF9ED3FF),
     FortuneColor.navy => const Color(0xFF9EABFF),
     FortuneColor.purple => const Color(0xFFB09FEA),
-    FortuneColor.brown => const Color(0xFFD7B689),
+    FortuneColor.brown => const Color(0xFFCE9580),
     FortuneColor.grey => const Color(0xFFA2A2A2),
     FortuneColor.black => const Color(0xFF515151),
-    FortuneColor.pink => const Color(0xFFFFB6B7),
+    FortuneColor.pink => const Color(0xFFFFB6D4),
   };
 
   String get label => switch (this) {
