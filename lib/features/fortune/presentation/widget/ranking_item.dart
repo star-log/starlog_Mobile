@@ -1,9 +1,10 @@
-import 'package:flowbite_icons/flowbite_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:starlog_mobile/core/constants/color.dart';
 import 'package:starlog_mobile/core/constants/text_style.dart';
 import 'package:starlog_mobile/core/enums/zodiac.dart';
-import 'package:starlog_mobile/features/main/presentation/widget/my_badge.dart';
+import 'package:starlog_mobile/core/utils/star_util.dart';
+import 'package:starlog_mobile/features/fortune/presentation/widget/my_badge.dart';
+import 'package:starlog_mobile/features/fortune/presentation/widget/star_rating.dart';
 
 class RankingItem extends StatelessWidget {
   final int rank;
@@ -22,14 +23,6 @@ class RankingItem extends StatelessWidget {
     2 => RankingColor.second,
     3 => RankingColor.third,
     _ => RankingColor.other,
-  };
-
-  int get _starCount => switch (rank) {
-    1 => 5,
-    2 || 3 => 4,
-    4 || 5 || 6 || 7 => 3,
-    8 || 9 || 10 || 11 => 2,
-    _ => 1,
   };
 
   @override
@@ -92,16 +85,7 @@ class RankingItem extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(right: 20),
-                  child: Row(
-                    children: List.generate(
-                      _starCount,
-                      (_) => Icon(
-                        FlowbiteSolidIcons.star,
-                        size: 20,
-                        color: StarlogColor.star,
-                      ),
-                    ),
-                  ),
+                  child: StarRating(count: starCountFromRank(rank))
                 ),
               ],
             ),

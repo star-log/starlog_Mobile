@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:starlog_mobile/core/widgets/bottom_navigation_bar.dart';
-import 'package:starlog_mobile/features/main/presentation/view/main_view.dart';
+import 'package:starlog_mobile/features/fortune/presentation/view/fortune_detail_view.dart';
+import 'package:starlog_mobile/features/fortune/presentation/view/fortune_view.dart';
 import 'package:starlog_mobile/features/on_boarding/presentation/on_boarding_view.dart';
 import 'package:starlog_mobile/features/splash/presentation/splash.dart';
 
+final _rootNavigatorKey = GlobalKey<NavigatorState>();
+
 final GoRouter appRouter = GoRouter(
+  navigatorKey: _rootNavigatorKey,
   initialLocation: '/splash',
   routes: [
     GoRoute(
@@ -33,7 +37,10 @@ final GoRouter appRouter = GoRouter(
           body: navigationShell,
           bottomNavigationBar: StarlogBottomNavBar(
             currentIndex: navigationShell.currentIndex,
-            onTap: (index) => navigationShell.goBranch(index),
+            onTap: (index) => navigationShell.goBranch(
+              index,
+              initialLocation: index == navigationShell.currentIndex,
+            ),
           ),
         ),
         transitionsBuilder: (context, animation, secondaryAnimation, child) =>
@@ -49,7 +56,25 @@ final GoRouter appRouter = GoRouter(
       branches: [
         StatefulShellBranch(
           routes: [
-            GoRoute(path: '/main', builder: (_, _) => const StarlogMain()),
+            GoRoute(
+                path: '/main',
+                builder: (_, _) => const StarlogMain(),
+              routes: [
+                GoRoute(
+                  path: 'detail',
+                  pageBuilder: (context, state) {
+                    final extra = state.extra;
+                    final (fortuneId, animate) = extra is (int, bool)
+                        ? extra
+                        : (1, true);
+                    final child = FortuneDetailView(fortuneId: fortuneId);
+                    return animate
+                        ? MaterialPage(child: child)
+                        : NoTransitionPage(child: child);
+                  },
+                )
+              ]
+            ),
           ],
         ),
       ],
